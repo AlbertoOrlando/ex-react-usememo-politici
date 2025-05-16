@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from 'react'
 import './App.css'
 
+// milestone 1 e milestone 2
+
 function App() {
   const [politicians, setPoliticians] = useState([])
   const [search, setSearch] = useState('')
@@ -47,5 +49,6 @@ function App() {
     </>
   )
 }
+
 
 export default App
