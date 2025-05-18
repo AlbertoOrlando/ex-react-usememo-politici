@@ -28,7 +28,7 @@ function App() {
   const PoliticianCard = memo(function PoliticianCard({ politician }) {
     console.log('Render Card:', politician.name)
     return (
-      <div className='politician' key={politician.id}>
+      <div className='politician'>
         <p className='politician_name'>{politician.name}</p>
         <img className='politician_img' src={politician.image} alt={politician.name} />
         <p className='politician_position'>{politician.position}</p>
