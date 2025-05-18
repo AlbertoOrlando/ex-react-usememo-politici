@@ -1,7 +1,6 @@
-import { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, memo } from 'react'
 import './App.css'
 
-// milestone 1 e milestone 2
 
 function App() {
   const [politicians, setPoliticians] = useState([])
@@ -26,6 +25,18 @@ function App() {
     )
   }, [politicians, search])
 
+  const PoliticianCard = memo(function PoliticianCard({ politician }) {
+    console.log('Render Card:', politician.name)
+    return (
+      <div className='politician' key={politician.id}>
+        <p className='politician_name'>{politician.name}</p>
+        <img className='politician_img' src={politician.image} alt={politician.name} />
+        <p className='politician_position'>{politician.position}</p>
+        <p className='politician_bio'>{politician.biography}</p>
+      </div>
+    )
+  })
+
   return (
     <>
       <h1>Politicians</h1>
@@ -38,12 +49,7 @@ function App() {
       />
       <div className='politician-list' >
         {filteredPoliticians.map(politician => (
-          <div className='politician' key={politician.id}>
-            <p className='politician_name'>{politician.name}</p>
-            <img className='politician_img' src={politician.image} alt={politician.name} />
-            <p className='politician_position'>{politician.position}</p>
-            <p className='politician_bio'>{politician.biography}</p>
-          </div>
+          <PoliticianCard key={politician.id} politician={politician} />
         ))}
       </div>
     </>
